@@ -13,8 +13,37 @@
 	class='container border rounded my-3'
 >
 	<div class='my-3'>
-		<label for='club-img' class='form-label'>Imagen: </label>
+		<label for='club-img' class='form-label'>Club Image </label>
 		<input type='file' name='club-img' id='club-img' class='form-control' />
+	</div>
+	<div class='my-3'>
+		<label for='club-name' class='form-label'>Club Name </label>
+		<input type='text' name='club-name' id='club-name' class='form-control' />
+	</div>
+	<div class='my-3'>
+		<label for='club-owner' class='form-label'>Club Owner </label>
+		<input type='text' name='club-owner' id='club-owner' class='form-control' />
 	</div>
 	<input type='submit' value='Send' class='btn btn-primary my-3' />
 </form>
+
+<ul class='list-group list-group-flush'>
+	{{#each data.teams as |team|}}
+		<li class='list-group-item'>
+			<ul>
+				<li>
+					{{team.name}}
+				</li>
+				<li>
+					{{team.player}}
+				</li>
+				<li>
+					{{team.imgPath}}
+				</li>
+				<li>
+					<img src='{{team.imgPath}}' alt='' />
+				</li>
+			</ul>
+		</li>
+	{{/each}}
+</ul>
