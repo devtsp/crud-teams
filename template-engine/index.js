@@ -38,7 +38,7 @@ app.get('/form', (req, res) => {
 	});
 });
 
-app.post('/form', upload.single('club-img'), (req, res) => {
+app.post('/form', upload.single('team-img'), (req, res) => {
 	const newTeam = new Team(req.file, req.body);
 	const newTeamJson = JSON.stringify(newTeam);
 	fs.writeFileSync(`db/saved_teams/${newTeam.id}.json`, newTeamJson);
@@ -51,8 +51,8 @@ console.log(`Listening on http://localhost:${PORT}`);
 class Team {
 	constructor(file, body) {
 		this.id = uniqid();
-		this.name = body['club-name'];
-		this.player = body['club-owner'];
-		this.imgPath = file.path;
+		this.imgFilename = file.filename;
+		this.name = body['team-name'];
+		this.owner = body['team-owner'];
 	}
 }

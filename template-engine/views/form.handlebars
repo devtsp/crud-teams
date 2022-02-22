@@ -1,48 +1,81 @@
-{{#if data.mensaje}}
-	<p>{{data.mensaje}}</p>
-
-	<div class='club-img'>
-		<img class='img-fluid' src='./uploads/img/{{data.nombreArchivo}}' />
-	</div>
-{{/if}}
-<!-- enctype="multipart/form-data" es lo que nos permite subir un archivo al servidor -->
 <form
 	action='/form'
 	method='POST'
 	enctype='multipart/form-data'
-	class='container border rounded my-3'
+	class='container border border-3 border-white rounded my-3 py-3'
 >
-	<div class='my-3'>
-		<label for='club-img' class='form-label'>Club Image </label>
-		<input type='file' name='club-img' id='club-img' class='form-control' />
+	<h4 class='mb-2 text-center'>Create Team</h4>
+	<div class='my-2'>
+		<label
+			for='team-img'
+			class='form-label my-0 text-black-50 ps-1'
+		>Image</label>
+		<input
+			type='file'
+			name='team-img'
+			id='team-img'
+			class='form-control form-control-sm'
+		/>
 	</div>
-	<div class='my-3'>
-		<label for='club-name' class='form-label'>Club Name </label>
-		<input type='text' name='club-name' id='club-name' class='form-control' />
+	<div class='my-2'>
+		<label
+			for='team-name'
+			class='form-label my-0 text-black-50 ps-1'
+		>Name</label>
+		<input
+			type='text'
+			name='team-name'
+			id='team-name'
+			class='form-control form-control-sm'
+		/>
 	</div>
-	<div class='my-3'>
-		<label for='club-owner' class='form-label'>Club Owner </label>
-		<input type='text' name='club-owner' id='club-owner' class='form-control' />
+	<div class='my-2'>
+		<label
+			for='team-owner'
+			class='form-label my-0 text-black-50 ps-1'
+		>Owner</label>
+		<input
+			type='text'
+			name='team-owner'
+			id='team-owner'
+			class='form-control form-control-sm'
+		/>
 	</div>
-	<input type='submit' value='Send' class='btn btn-primary my-3' />
+	<div class='d-flex justify-content-center'><input
+			type='submit'
+			value='Send'
+			class='btn btn-success mt-2 px-4 mx-auto'
+		/></div>
 </form>
 
-<ul class='list-group list-group-flush'>
+<ul id='teams-list' class='list-unstyled d-flex flex-column align-items-center'>
 	{{#each data.teams as |team|}}
-		<li class='list-group-item'>
-			<ul>
-				<li>
-					{{team.name}}
+		<li id='{{team.id}}' class='bg-1 my-2 w-75 text-center'>
+			<ul class='list-unstyled d-flex'>
+				<li class='img-container d-flex align-items-center'>
+					<img class='team-img' src='uploads/img/{{team.imgFilename}}' alt='' />
 				</li>
-				<li>
-					{{team.player}}
-				</li>
-				<li>
-					{{team.imgPath}}
-				</li>
-				<li>
-					<img src='{{team.imgPath}}' alt='' />
-				</li>
+				<div class='d-flex flex-column justify-content-evenly flex-fill'>
+					<div>
+						<li class='bg-3'>
+							<strong class='fs-5 lh-1'>{{team.name}}</strong>
+						</li>
+						<li>
+							<span>- {{team.owner}} -</span>
+						</li>
+					</div>
+					<div class='d-flex justify-content-evenly'>
+						<li>
+							<i class='bi bi-eye'></i>
+						</li>
+						<li>
+							<i class='bi bi-pencil-square'></i>
+						</li>
+						<li>
+							<i class='bi bi-trash3'></i>
+						</li>
+					</div>
+				</div>
 			</ul>
 		</li>
 	{{/each}}
