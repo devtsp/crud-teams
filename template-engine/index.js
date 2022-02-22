@@ -29,7 +29,7 @@ app.get('/form', (req, res) => {
 		const teamObj = JSON.parse(teamString);
 		teamObjects.push(teamObj);
 	});
-	console.log(teamObjects);
+	// console.log(teamObjects);
 	res.render('form', {
 		layout: 'document',
 		data: {
@@ -42,6 +42,16 @@ app.post('/form', upload.single('team-img'), (req, res) => {
 	const newTeam = new Team(req.file, req.body);
 	const newTeamJson = JSON.stringify(newTeam);
 	fs.writeFileSync(`db/saved_teams/${newTeam.id}.json`, newTeamJson);
+	res.redirect('/form');
+});
+
+app.get('/delete/:id', (req, res) => {
+	const toDeleteObj = JSON.parse(
+		fs.readFileSync(`db/saved_teams/${req.params.id}.json`)
+	);
+	const toDeleteImg = toDeleteObj.imgFilename;
+	fs.rmSync(`public/uploads/img/${toDeleteImg}`);
+	fs.rmSync(`db/saved_teams/${req.params.id}.json`);
 	res.redirect('/form');
 });
 
