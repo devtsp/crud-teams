@@ -1,10 +1,7 @@
-* {
-	box-sizing: border-box;
-}
-
 #app {
-	width: 100vw;
+	width: 360px;
 	min-height: 100vh;
+	margin: 0 auto;
 }
 
 body {
@@ -20,10 +17,10 @@ body {
 }
 
 .bg-3 {
-	background-color: rgba(25, 168, 11, 0.603);
+	background-color: rgb(255, 255, 255);
 }
 
-.team-img {
+.team-crest {
 	max-width: 100%;
 	max-height: 100%;
 }

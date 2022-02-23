@@ -22,6 +22,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/form', (req, res) => {
+	res.render('form', {
+		layout: 'document',
+	});
+});
+
+app.post('/form', upload.single('crest'), (req, res) => {
+	const newTeam = new FootballClub(req.file, req.body);
+	const newTeamJson = JSON.stringify(newTeam);
+	fs.writeFileSync(`db/saved_teams/${newTeam.id}.json`, newTeamJson);
+	res.redirect('/form');
+});
+
+app.get('/clubs', (req, res) => {
 	const files = fs.readdirSync('db/saved_teams');
 	const teamObjects = [];
 	files.forEach(savedTeam => {
@@ -29,8 +42,7 @@ app.get('/form', (req, res) => {
 		const teamObj = JSON.parse(teamString);
 		teamObjects.push(teamObj);
 	});
-	// console.log(teamObjects);
-	res.render('form', {
+	res.render('clubs', {
 		layout: 'document',
 		data: {
 			teams: teamObjects,
@@ -38,31 +50,32 @@ app.get('/form', (req, res) => {
 	});
 });
 
-app.post('/form', upload.single('team-img'), (req, res) => {
-	const newTeam = new Team(req.file, req.body);
-	const newTeamJson = JSON.stringify(newTeam);
-	fs.writeFileSync(`db/saved_teams/${newTeam.id}.json`, newTeamJson);
-	res.redirect('/form');
-});
-
 app.get('/delete/:id', (req, res) => {
 	const toDeleteObj = JSON.parse(
 		fs.readFileSync(`db/saved_teams/${req.params.id}.json`)
 	);
-	const toDeleteImg = toDeleteObj.imgFilename;
+	const toDeleteImg = toDeleteObj.crest;
 	fs.rmSync(`public/uploads/img/${toDeleteImg}`);
 	fs.rmSync(`db/saved_teams/${req.params.id}.json`);
 	res.redirect('/form');
 });
 
-app.listen(PORT);
-console.log(`Listening on http://localhost:${PORT}`);
-
-class Team {
+class FootballClub {
 	constructor(file, body) {
 		this.id = uniqid();
-		this.imgFilename = file.filename;
-		this.name = body['team-name'];
-		this.owner = body['team-owner'];
+		this.crest = file.filename;
+		this.colors = `${body['color-1']} / ${body['color-2']}`;
+		this.name = body.name;
+		this.tla = body.tla;
+		this.owner = body.owner;
+		this.adress = body.adress;
+		this.phone = body.phone;
+		this.email = body.email;
+		this.founded = body.founded;
+		this.venue = body.venue;
+		this['last-updated'] = body['last-updated'];
 	}
 }
+
+app.listen(PORT);
+console.log(`Listening on http://localhost:${PORT}`);

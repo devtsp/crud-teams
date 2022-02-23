@@ -1,86 +1,171 @@
-<form
-	action='/form'
-	method='POST'
-	enctype='multipart/form-data'
-	class='container border border-3 border-white rounded my-3 py-3'
->
-	<h4 class='mb-2 text-center'>Create Team</h4>
-	<div class='my-2'>
-		<label
-			for='team-img'
-			class='form-label my-0 text-black-50 ps-1'
-		>Image</label>
-		<input
-			type='file'
-			name='team-img'
-			id='team-img'
-			class='form-control form-control-sm'
-		/>
-	</div>
-	<div class='my-2'>
-		<label
-			for='team-name'
-			class='form-label my-0 text-black-50 ps-1'
-		>Name</label>
-		<input
-			type='text'
-			name='team-name'
-			id='team-name'
-			class='form-control form-control-sm'
-		/>
-	</div>
-	<div class='my-2'>
-		<label
-			for='team-owner'
-			class='form-label my-0 text-black-50 ps-1'
-		>Owner</label>
-		<input
-			type='text'
-			name='team-owner'
-			id='team-owner'
-			class='form-control form-control-sm'
-		/>
-	</div>
-	<div class='d-flex justify-content-center'><input
-			type='submit'
-			value='Send'
-			class='btn btn-success mt-2 px-4 mx-auto'
-		/></div>
-</form>
-
-<ul id='teams-list' class='list-unstyled d-flex flex-column align-items-center'>
-	{{#each data.teams as |team|}}
-		<li id='{{team.id}}' class='bg-1 my-2 w-75 text-center'>
-			<ul class='list-unstyled d-flex'>
-				<li
-					class='img-container d-flex align-items-center justify-content-center'
-				>
-					<img class='team-img' src='uploads/img/{{team.imgFilename}}' />
-				</li>
-				<div class='d-flex flex-column justify-content-evenly flex-fill'>
-					<div>
-						<li class='bg-3'>
-							<strong class='fs-5 lh-1'>{{team.name}}</strong>
-						</li>
-						<li>
-							<span>- {{team.owner}} -</span>
-						</li>
-					</div>
-					<div class='d-flex justify-content-evenly'>
-						<li>
-							<i class='bi bi-info-circle'></i>
-						</li>
-						<li>
-							<i class='bi bi-pencil-square'></i>
-						</li>
-						<li>
-							<a class='text-black' href='delete/{{team.id}}'>
-								<i class='bi bi-trash3'></i>
-							</a>
-						</li>
-					</div>
-				</div>
-			</ul>
-		</li>
-	{{/each}}
-</ul>
+<div class='border border-3 border-white rounded px-3 py-2'>
+	<form action='/form' method='POST' enctype='multipart/form-data' class='mb-0'>
+		<h5 class='text-center m-0'>Create Club</h5>
+		<div class='my-3'>
+			<h6 for='crest' class='mb-2 text-black-50 text-center'>Upload a personal
+				crest</h6>
+			<label
+				for='crest'
+				class='form-label my-0 text-black-50 visually-hidden'
+			>Crest Img File</label>
+			<input
+				type='file'
+				name='crest'
+				id='crest'
+				class='form-control form-control-sm my-1'
+				required
+			/>
+		</div>
+		<h6 for='crest' class='mb-2 text-black-50 text-center'>Select main colors of
+			the Club</h6>
+		<div class='mb-3 d-flex justify-content-center align-items-center'>
+			<div class='me-3'>
+				<label
+					for='color-1'
+					class='form-label my-0 text-black-50 ps-1 visually-hidden'
+				>color 1</label>
+				<input
+					type='color'
+					name='color-1'
+					id='color-1'
+					class='form-control form-control-color'
+					placeholder='color 1'
+					required
+				/>
+			</div>
+			<div>
+				<label
+					for='color-2'
+					class='form-label my-0 text-black-50 ps-1 visually-hidden'
+				>color 2</label>
+				<input
+					type='color'
+					name='color-2'
+					id='color-2'
+					class='form-control form-control-color'
+					placeholder='color 2'
+					required
+				/>
+			</div>
+		</div>
+		<h6 class='my-2 text-center m-0 text-black-50 text-center'>Fill your Club
+			Information</h6>
+		<div>
+			<label
+				for='name'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Name</label>
+			<input
+				type='text'
+				name='name'
+				id='name'
+				class='form-control form-control-sm my-1'
+				placeholder='name'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='name'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>tla</label>
+			<input
+				type='text'
+				name='tla'
+				id='tla'
+				class='form-control form-control-sm my-1'
+				placeholder='three-letter acronym'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='area'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Area</label>
+			<input
+				type='text'
+				name='area'
+				id='area'
+				class='form-control form-control-sm my-1'
+				placeholder='area'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='owner'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Adress</label>
+			<input
+				type='text'
+				name='adress'
+				id='adress'
+				class='form-control form-control-sm my-1'
+				placeholder='adress'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='phone'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Phone</label>
+			<input
+				type='text'
+				name='phone'
+				id='phone'
+				class='form-control form-control-sm my-1'
+				placeholder='phone'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='email'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Email</label>
+			<input
+				type='email'
+				name='email'
+				id='email'
+				class='form-control form-control-sm my-1'
+				placeholder='email'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='founded'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Founded</label>
+			<input
+				type='text'
+				name='founded'
+				id='founded'
+				class='form-control form-control-sm my-1'
+				placeholder='founded'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='venue'
+				class='form-label my-0 text-black-50 ps-1 visually-hidden'
+			>Venue</label>
+			<input
+				type='text'
+				name='venue'
+				id='venue'
+				class='form-control form-control-sm my-1'
+				placeholder='venue'
+				required
+			/>
+		</div>
+		<div class='d-flex justify-content-center mt-2'><input
+				type='submit'
+				value='Send'
+				class='btn btn-sm btn-success px-4'
+			/></div>
+	</form>
+</div>
