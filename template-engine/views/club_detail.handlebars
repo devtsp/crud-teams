@@ -1,47 +1,51 @@
-<div class='mb-2 d-flex justify-content-evenly'>
+<div class='mb-4 d-flex justify-content-evenly'>
 	<a href='/' class='text-decoration-none text-black'>New Club</a>
-	<a href='clubs' class='text-decoration-none text-black'>View Clubs</a>
+	<a href='/clubs' class='text-decoration-none text-black'>View Clubs</a>
 </div>
 
-<ul class='list-unstyled my-4'>
-	{{#with data.club}}
+<ul id='club-info' class='list-unstyled my-2'>
+	{{#with data}}
 
 		<li class='d-flex justify-content-center'>
 			<div id='crest-main-container'>
-				<img src='/uploads/img/{{crest}}' alt='{{name}}' />
+				<img src='/uploads/img/{{club.crest}}' alt='{{club.name}}' />
 			</div>
 		</li>
-		<li class='row d-flex justify-content-between'>
-			<h3 class='text-center my-4'>{{name}}</h3>
+		<li>
+			<h3 class='text-center mt-4 p-0'>{{club.name}}</h3>
+		</li>
+		<li
+			style='height: 5px;background-image: linear-gradient(to right, transparent, {{color1}} 20%, {{color1}} 50%, {{color2}} 50%, {{color2}} 80%, transparent);'
+		>
 		</li>
 		<div class='container'>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>tla </span>
-				<span class='col-6 text-center'>{{tla}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>TLA </span>
+				<span class='col-8 text-start'>{{club.tla}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>adress </span>
-				<span class='col-6 text-center'>{{adress}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Adress </span>
+				<span class='col-8 text-start'>{{club.adress}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>phone </span>
-				<span class='col-6 text-center'>{{phone}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Phone </span>
+				<span class='col-8 text-start'>{{club.phone}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>email </span>
-				<span class='col-6 text-center'>{{email}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Email </span>
+				<span class='col-8 text-start'>{{club.email}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>founded </span>
-				<span class='col-6 text-center'>{{founded}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Founded </span>
+				<span class='col-8 text-start'>{{club.founded}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>venue </span>
-				<span class='col-6 text-center'>{{venue}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Venue </span>
+				<span class='col-8 text-start'>{{club.venue}}</span>
 			</li>
-			<li class='row d-flex justify-content-between my-3'>
-				<span class='text-black-50 col-6 text-center'>last updated </span>
-				<span class='col-6 text-center'>{{last-updated}}</span>
+			<li class='row d-flex justify-content-between py-2'>
+				<span class='text-black-50 col-4 text-start'>Last Updated </span>
+				<span class='col-8 text-start'>{{club.last-updated}}</span>
 			</li>
 		</div>
 	{{/with}}

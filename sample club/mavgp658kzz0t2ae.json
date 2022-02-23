@@ -1,8 +1,8 @@
 {
 	"id": "mavgp658kzz0t2ae",
 	"crest": "fafdb441c390e43771827be40bd6aa14",
-	"colors": "#000000 / #000000",
-	"name": "sampleClub FC",
+	"colors": ["#fcad03", "#4c8af5"],
+	"name": "Sample Club FC",
 	"tla": "smp",
 	"adress": "123 street ",
 	"phone": "1234556",

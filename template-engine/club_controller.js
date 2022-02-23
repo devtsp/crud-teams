@@ -37,7 +37,7 @@ class FootballClub {
 	constructor(file, body) {
 		this.id = uniqid();
 		this.crest = file.filename;
-		this.colors = `${body['color-1']} / ${body['color-2']}`;
+		this.colors = [body['color-1'], body['color-2']];
 		this.name = body.name;
 		this.tla = body.tla;
 		this.owner = body.owner;

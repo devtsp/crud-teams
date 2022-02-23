@@ -54,6 +54,8 @@ app.get('/clubs/:id', (req, res) => {
 		layout: 'document',
 		data: {
 			club,
+			color1: club.colors[0],
+			color2: club.colors[1],
 		},
 	});
 });
