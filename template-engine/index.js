@@ -57,7 +57,7 @@ app.get('/delete/:id', (req, res) => {
 	const toDeleteImg = toDeleteObj.crest;
 	fs.rmSync(`public/uploads/img/${toDeleteImg}`);
 	fs.rmSync(`db/saved_teams/${req.params.id}.json`);
-	res.redirect('/form');
+	res.redirect('/clubs');
 });
 
 class FootballClub {

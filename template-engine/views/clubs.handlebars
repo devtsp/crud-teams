@@ -1,33 +1,39 @@
-<ul id='teams-list' class='list-unstyled d-flex flex-column align-items-center'>
-	{{#each data.teams as |team|}}
-		<li id='{{team.id}}' class='bg-1 my-2 w-75 text-center'>
-			<ul class='list-unstyled d-flex'>
-				<li
-					class='img-container d-flex align-items-center justify-content-center'
-				>
-					<img class='team-crest' src='uploads/img/{{team.crest}}' />
-				</li>
-				<div class='d-flex flex-column justify-content-evenly flex-fill'>
-					<div>
-						<li>
-							<u class='fs-5 lh-1 fw-bold'>{{team.name}}</u>
-						</li>
+<div class='mb-2 d-flex justify-content-evenly'>
+	<a href='form' class='text-decoration-none text-black'>New Club</a>
+	<a href='clubs' class='text-black'>View Clubs</a>
+</div>
+<div class='border border-3 border-white rounded px-3 py-2'>
+	<ul class='list-unstyled d-flex flex-column align-items-stretch'>
+		{{#each data.teams as |team|}}
+			<li id='{{team.id}}' class='bg-1 my-2 text-center'>
+				<ul class='list-unstyled d-flex'>
+					<li
+						class='img-container d-flex align-items-center justify-content-center'
+					>
+						<img class='team-crest' src='uploads/img/{{team.crest}}' />
+					</li>
+					<div class='d-flex flex-column justify-content-evenly flex-fill'>
+						<div>
+							<li>
+								<u class='fs-5 lh-1 fw-bold'>{{team.name}}</u>
+							</li>
+						</div>
+						<div class='d-flex justify-content-evenly'>
+							<li>
+								<i class='bi bi-info-circle'></i>
+							</li>
+							<li>
+								<i class='bi bi-pencil-square'></i>
+							</li>
+							<li>
+								<a class='text-black' href='delete/{{team.id}}'>
+									<i class='bi bi-trash3'></i>
+								</a>
+							</li>
+						</div>
 					</div>
-					<div class='d-flex justify-content-evenly'>
-						<li>
-							<i class='bi bi-info-circle'></i>
-						</li>
-						<li>
-							<i class='bi bi-pencil-square'></i>
-						</li>
-						<li>
-							<a class='text-black' href='delete/{{team.id}}'>
-								<i class='bi bi-trash3'></i>
-							</a>
-						</li>
-					</div>
-				</div>
-			</ul>
-		</li>
-	{{/each}}
-</ul>
+				</ul>
+			</li>
+		{{/each}}
+	</ul>
+</div>
