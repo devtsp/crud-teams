@@ -4,22 +4,34 @@
 </div>
 
 {{#if data.teams}}
-	<ul class='list-unstyled m-0 d-flex flex-column align-items-stretch'>
+	<ul
+		id='club-list'
+		class='list-unstyled m-0 d-flex flex-column align-items-stretch'
+	>
 		{{#each data.teams as |team|}}
-			<li id='{{team.id}}' class='bg-1 my-2 text-center'>
+			<li id='{{team.id}}' class='mb-2 text-center'>
 				<ul class='list-unstyled d-flex align-items-center'>
 					<li
-						class='img-container d-flex align-items-center justify-content-center'
+						id='crest-mini'
+						class='d-flex align-items-center justify-content-center'
 					>
 						<img class='team-crest' src='uploads/img/{{team.crest}}' />
 					</li>
 					<li class='d-flex align-items-center justify-content-start flex-fill'>
 						<h6 class='fs-6 lh-1 m-0 ps-3'>
-							<a href='clubs/{{team.id}}' class='text-primary'>{{team.name}}</a>
+							<a
+								id='club-details-link'
+								href='clubs/{{team.id}}'
+								class='text-black text-decoration-none'
+							>{{team.name}}</a>
 						</h6>
 					</li>
 					<li>
-						<a class='text-danger' href='clubs/delete/{{team.id}}'>
+						<a
+							id='delete-club'
+							class='text-black'
+							href='clubs/delete/{{team.id}}'
+						>
 							<i class='bi bi-trash3 px-2'></i>
 						</a>
 					</li>

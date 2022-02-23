@@ -1,44 +1,56 @@
+body {
+	background-color: rgb(132, 148, 132);
+}
+
 #app {
 	width: 360px;
 	min-height: 100vh;
 	margin: 0 auto;
+	background-color: rgb(215, 241, 215);
 }
 
-body {
-	background-color: rgb(192, 214, 192);
+/* CLUB LIST */
+
+#club-list > li {
+	border-bottom: 1px solid white;
 }
 
-.bg-1 {
-	background-color: rgba(150, 150, 150, 0.233);
+#club-details-link:hover {
+	color: rgb(1, 1, 129) !important;
 }
 
-.bg-2 {
-	background-color: rgba(255, 255, 255, 0);
+#crest-mini {
+	height: 20px;
+	width: 20px;
+}
+#crest-mini img {
+	height: 100%;
 }
 
-#crest-main-container {
+#delete-club i:hover {
+	color: rgb(224, 69, 69);
+}
+
+/* CLUB DETAILS */
+
+#crest-main {
 	width: 160px;
 	height: 160px;
+	overflow: hidden;
+	border: 5px solid rgba(255, 255, 255, 0.363);
+	border-radius: 20px;
+	outline: 1px solid rgb(114, 114, 114);
 }
 
-.img-container {
-	height: 30px;
-	width: 30px;
-	background-color: rgba(250, 235, 215, 0);
-}
-
-img {
+#crest-main img {
 	width: 100%;
 }
 
 #club-info h3 {
-	letter-spacing: 0.2rem;
+	letter-spacing: 0.14rem;
 }
 
 #club-info .container li {
 	border-bottom: 1px solid white;
 	background-color: rgba(255, 255, 255, 0.226);
-}
-
-#content {
 }
