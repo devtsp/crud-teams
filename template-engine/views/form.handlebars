@@ -1,10 +1,10 @@
 <div class='mb-2 d-flex justify-content-evenly'>
-	<a href='form' class='text-black'>New Club</a>
+	<a href='/' class='text-black'>New Club</a>
 	<a href='clubs' class='text-decoration-none text-black'>View Clubs</a>
 </div>
 
 <div class='border border-3 border-white rounded px-3 py-2'>
-	<form action='/form' method='POST' enctype='multipart/form-data' class='mb-0'>
+	<form action='/' method='POST' enctype='multipart/form-data' class='mb-0'>
 		<h5 class='text-center m-0'>Create Club</h5>
 		<div class='my-3'>
 			<h6 for='crest' class='mb-2 text-black-50 text-center'>Upload a personal
@@ -66,6 +66,8 @@
 				id='name'
 				class='form-control form-control-sm my-1'
 				placeholder='name'
+				minlength='6'
+				maxlength='12'
 				required
 			/>
 		</div>
@@ -80,6 +82,8 @@
 				id='tla'
 				class='form-control form-control-sm my-1'
 				placeholder='three-letter acronym'
+				minlength='3'
+				maxlength='3'
 				required
 			/>
 		</div>
@@ -122,6 +126,7 @@
 				id='phone'
 				class='form-control form-control-sm my-1'
 				placeholder='phone'
+				minlength='8'
 				required
 			/>
 		</div>
@@ -149,7 +154,9 @@
 				name='founded'
 				id='founded'
 				class='form-control form-control-sm my-1'
-				placeholder='founded'
+				placeholder='year founded'
+				minlength='4'
+				maxlength='4'
 				required
 			/>
 		</div>
@@ -164,6 +171,7 @@
 				id='venue'
 				class='form-control form-control-sm my-1'
 				placeholder='venue'
+				minlength='3'
 				required
 			/>
 		</div>
