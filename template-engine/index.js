@@ -17,10 +17,10 @@ app.set('view engine', 'handlebars');
 const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/img' });
 
-app.use(express.static(`${__dirname}/public`));
+app.use('/', express.static(`./public`));
 
 app.get('/', (req, res) => {
-	res.render('form', {
+	res.render('new_club', {
 		layout: 'document',
 	});
 });
@@ -31,14 +31,13 @@ app.post('/', upload.single('crest'), (req, res) => {
 });
 
 app.get('/clubs/delete/:id', (req, res) => {
-	console.log('in');
 	deleteClub(req);
 	res.redirect('/clubs');
 });
 
 app.get('/clubs', (req, res) => {
 	const teamObjects = getAllClubs();
-	res.render('clubs', {
+	res.render('all_clubs', {
 		layout: 'document',
 		data: {
 			teams: teamObjects,
@@ -47,15 +46,17 @@ app.get('/clubs', (req, res) => {
 	});
 });
 
-// app.get('/clubs/:id', (req, res) => {
-// 	const club = getClub(req);
-// 	res.render('club', {
-// 		layout: 'document',
-// 		data: {
-// 			club: JSON.stringify(club),
-// 		},
-// 	});
-// });
+app.get('/clubs/:id', (req, res) => {
+	const club = getClub(req);
+	club['last-updated'] = club['last-updated'].match(/\d+-\d+-\d+(?=T)/);
+	club.tla = club.tla.toUpperCase();
+	res.render('club_detail', {
+		layout: 'document',
+		data: {
+			club,
+		},
+	});
+});
 
 app.listen(PORT);
 console.log(`Listening on http://localhost:${PORT}`);

@@ -1,0 +1,48 @@
+<div class='mb-2 d-flex justify-content-evenly'>
+	<a href='/' class='text-decoration-none text-black'>New Club</a>
+	<a href='clubs' class='text-decoration-none text-black'>View Clubs</a>
+</div>
+
+<ul class='list-unstyled my-4'>
+	{{#with data.club}}
+
+		<li class='d-flex justify-content-center'>
+			<div id='crest-main-container'>
+				<img src='/uploads/img/{{crest}}' alt='{{name}}' />
+			</div>
+		</li>
+		<li class='row d-flex justify-content-between'>
+			<h3 class='text-center my-4'>{{name}}</h3>
+		</li>
+		<div class='container'>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>tla </span>
+				<span class='col-6 text-center'>{{tla}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>adress </span>
+				<span class='col-6 text-center'>{{adress}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>phone </span>
+				<span class='col-6 text-center'>{{phone}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>email </span>
+				<span class='col-6 text-center'>{{email}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>founded </span>
+				<span class='col-6 text-center'>{{founded}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>venue </span>
+				<span class='col-6 text-center'>{{venue}}</span>
+			</li>
+			<li class='row d-flex justify-content-between my-3'>
+				<span class='text-black-50 col-6 text-center'>last updated </span>
+				<span class='col-6 text-center'>{{last-updated}}</span>
+			</li>
+		</div>
+	{{/with}}
+</ul>
