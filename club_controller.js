@@ -33,7 +33,6 @@ const getClub = req => {
 
 const handleCrest = (req, club) => {
 	if (req.file) {
-		console.log('new crest uploaded');
 		fs.rmSync(`public/uploads/img/${club.crest}`);
 		return req.file.filename;
 	}

@@ -21,7 +21,6 @@ const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/img' });
 
 app.use(express.static(`public`));
-// app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.render('new_club', {
