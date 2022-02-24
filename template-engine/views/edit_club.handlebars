@@ -1,0 +1,170 @@
+<div class='mb-4 d-flex justify-content-evenly'>
+	<a href='/' class='text-decoration-none text-black'>New Club</a>
+	<a href='clubs' class='text-decoration-none text-black'>View Clubs</a>
+</div>
+
+{{#with data}}
+	<form action='/clubs/edit/{{club.id}}' method='POST' class='mb-0'>
+		<h6 class='text-center mb-3'>Edit Club</h6>
+		{{! <div class='my-3'>
+		<h6 for='crest' class='mb-2 text-black-50 text-center'>Change Crest</h6>
+		<label
+			for='crest'
+			class='form-label my-0 text-black-50'
+		>Crest Img File</label>
+		<input
+			type='file'
+			name='crest'
+			id='crest'
+			class='form-control form-control-sm my-1'
+			required
+		/>
+	</div> }}
+		<h6 for='crest' class='mb-2 text-black-50 text-center'>Change colors of the
+			Club</h6>
+		<div class='mb-3 d-flex justify-content-center align-items-center'>
+			<div class='me-3'>
+				<label for='color-1' class='form-label my-0 text-black-50'>color 1</label>
+				<input
+					type='color'
+					name='color-1'
+					id='color-1'
+					class='form-control form-control-color'
+					value='{{color1}}'
+					required
+				/>
+			</div>
+			<div>
+				<label for='color-2' class='form-label my-0 text-black-50'>color 2</label>
+				<input
+					type='color'
+					name='color-2'
+					id='color-2'
+					class='form-control form-control-color'
+					value='{{color2}}'
+					required
+				/>
+			</div>
+		</div>
+		<h6 class='my-2 text-center m-0 text-black-50 text-center'>Edit Club
+			Information</h6>
+		<div>
+			<label for='name' class='form-label my-0 text-black-50 ps-1'>Name</label>
+			<input
+				type='text'
+				name='name'
+				id='name'
+				class='form-control form-control-sm my-1'
+				minlength='6'
+				maxlength='20'
+				value='{{club.name}}'
+				required
+			/>
+		</div>
+		<div>
+			<label for='name' class='form-label my-0 text-black-50 ps-1'>tla</label>
+			<input
+				type='text'
+				name='tla'
+				id='tla'
+				class='form-control form-control-sm my-1'
+				minlength='3'
+				maxlength='3'
+				value='{{club.tla}}'
+				required
+			/>
+		</div>
+		<div>
+			<label for='area' class='form-label my-0 text-black-50 ps-1'>Area</label>
+			<input
+				type='text'
+				name='area'
+				id='area'
+				class='form-control form-control-sm my-1'
+				value='{{club.area}}'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='owner'
+				class='form-label my-0 text-black-50 ps-1'
+			>Adress</label>
+			<input
+				type='text'
+				name='adress'
+				id='adress'
+				class='form-control form-control-sm my-1'
+				value='{{club.adress}}'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='phone'
+				class='form-label my-0 text-black-50 ps-1'
+			>Phone</label>
+			<input
+				type='text'
+				name='phone'
+				id='phone'
+				class='form-control form-control-sm my-1'
+				minlength='8'
+				value='{{club.phone}}'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='email'
+				class='form-label my-0 text-black-50 ps-1'
+			>Email</label>
+			<input
+				type='email'
+				name='email'
+				id='email'
+				class='form-control form-control-sm my-1'
+				value='{{club.email}}'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='founded'
+				class='form-label my-0 text-black-50 ps-1'
+			>Founded</label>
+			<input
+				type='text'
+				name='founded'
+				id='founded'
+				class='form-control form-control-sm my-1'
+				placeholder='year founded'
+				minlength='4'
+				maxlength='4'
+				value='{{club.founded}}'
+				required
+			/>
+		</div>
+		<div>
+			<label
+				for='venue'
+				class='form-label my-0 text-black-50 ps-1'
+			>Venue</label>
+			<input
+				type='text'
+				name='venue'
+				id='venue'
+				class='form-control form-control-sm my-1'
+				minlength='3'
+				value='{{club.venue}}'
+				required
+			/>
+		</div>
+		<div class='d-flex justify-content-center mt-2'>
+			<button type='submit' class='btn btn-sm btn-success px-4'>
+				Send
+			</button>
+		</div>
+	</form>
+
+{{/with}}

@@ -19,18 +19,33 @@ const getAllClubs = () => {
 };
 
 const deleteClub = req => {
-	console.log(req.params.id);
 	const toDeleteObj = JSON.parse(
 		fs.readFileSync(`db/saved_teams/${req.params.id}.json`)
 	);
 	const toDeleteImg = toDeleteObj.crest;
 	fs.rmSync(`public/uploads/img/${toDeleteImg}`);
 	fs.rmSync(`db/saved_teams/${req.params.id}.json`);
-	console.log('success on delete');
 };
 
 const getClub = req => {
 	return JSON.parse(fs.readFileSync(`db/saved_teams/${req.params.id}.json`));
+};
+
+const editClub = req => {
+	const club = JSON.parse(
+		fs.readFileSync(`db/saved_teams/${req.params.id}.json`)
+	);
+	console.log(club);
+	const newData = req.body;
+	for (key in club) {
+		newData[key] ? (club[key] = newData[key]) : club[key];
+	}
+	club['last-updated'] = new Date();
+	club.colors[0] = newData['color-1'];
+	club.colors[1] = newData['color-2'];
+	fs.writeFileSync(`db/saved_teams/${club.id}.json`, JSON.stringify(club));
+	console.log(club);
+	return newData;
 };
 
 class FootballClub {
@@ -40,7 +55,7 @@ class FootballClub {
 		this.colors = [body['color-1'], body['color-2']];
 		this.name = body.name;
 		this.tla = body.tla;
-		this.owner = body.owner;
+		this.area = body.area;
 		this.adress = body.adress;
 		this.phone = body.phone;
 		this.email = body.email;
@@ -50,4 +65,4 @@ class FootballClub {
 	}
 }
 
-module.exports = { createClub, getAllClubs, deleteClub, getClub };
+module.exports = { createClub, getAllClubs, deleteClub, getClub, editClub };

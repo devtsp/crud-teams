@@ -54,3 +54,7 @@ body {
 	border-bottom: 1px solid white;
 	background-color: rgba(255, 255, 255, 0.226);
 }
+
+#club-edit-link i:hover {
+	color: rgb(1, 1, 129) !important;
+}
