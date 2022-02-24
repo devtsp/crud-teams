@@ -81,5 +81,5 @@ app.post('/clubs/edit/:id', upload.single('crest'), (req, res) => {
 	res.redirect(`/clubs/${req.params.id}`);
 });
 
-app.listen(PORT);
+app.listen(process.env.PORT || PORT);
 console.log(`Listening on http://localhost:${PORT}`);
