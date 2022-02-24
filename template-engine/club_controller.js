@@ -31,21 +31,29 @@ const getClub = req => {
 	return JSON.parse(fs.readFileSync(`db/saved_teams/${req.params.id}.json`));
 };
 
+const handleCrest = (req, club) => {
+	if (req.file) {
+		console.log('new crest uploaded');
+		fs.rmSync(`public/uploads/img/${club.crest}`);
+		return req.file.filename;
+	}
+};
+
 const editClub = req => {
 	const club = JSON.parse(
 		fs.readFileSync(`db/saved_teams/${req.params.id}.json`)
 	);
-	console.log(club);
+	const newCrest = handleCrest(req, club);
 	const newData = req.body;
 	for (key in club) {
 		newData[key] ? (club[key] = newData[key]) : club[key];
 	}
+	club.crest = newCrest || club.crest;
 	club['last-updated'] = new Date();
-	club.colors[0] = newData['color-1'];
-	club.colors[1] = newData['color-2'];
+	club.colors[0] = newData.color1;
+	club.colors[1] = newData.color2;
 	fs.writeFileSync(`db/saved_teams/${club.id}.json`, JSON.stringify(club));
-	console.log(club);
-	return newData;
+	return club;
 };
 
 class FootballClub {

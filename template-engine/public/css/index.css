@@ -58,3 +58,9 @@ body {
 #club-edit-link i:hover {
 	color: rgb(1, 1, 129) !important;
 }
+
+/* CLUB EDIT */
+
+.edit-color {
+	padding: 1px;
+}

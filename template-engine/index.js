@@ -21,8 +21,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/img' });
 
 app.use(express.static(`public`));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.render('new_club', {
@@ -77,7 +76,7 @@ app.get('/clubs/edit/:id', (req, res) => {
 	});
 });
 
-app.post('/clubs/edit/:id', (req, res) => {
+app.post('/clubs/edit/:id', upload.single('crest'), (req, res) => {
 	editClub(req);
 	res.redirect(`/clubs/${req.params.id}`);
 });
